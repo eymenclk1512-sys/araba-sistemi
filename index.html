@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101820">
+  <meta name="description" content="Karton direksiyonunu kamerayla takip eden deneysel direksiyon simülatörü.">
+  <title>Cardboard Wheel</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/vision_bundle.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand"><span class="brand-icon">◉</span><div><b>CARDBOARD WHEEL</b><small>Kameralı direksiyon denemesi</small></div></div>
+      <span id="status" class="status">Kamera kapalı</span>
+    </header>
+
+    <section class="camera-card">
+      <div class="section-head"><div><h1>Kamera takibi</h1><p>Telefonu direksiyonun karşısına sabitle.</p></div><span class="live-dot"></span></div>
+      <div class="video-wrap">
+        <video id="video" autoplay playsinline muted></video>
+        <canvas id="overlay"></canvas>
+        <div id="cameraPlaceholder" class="placeholder"><div class="camera-symbol">▣</div><b>Kamera henüz açılmadı</b><span>Başlamak için aşağıdaki düğmeye dokun.</span></div>
+      </div>
+      <div class="button-row">
+        <button id="startBtn" class="primary">Kamerayı aç</button>
+        <button id="stopBtn" class="secondary" disabled>Durdur</button>
+      </div>
+      <p class="hint">İzin istendiğinde kameraya izin ver. En iyi sonuç için iyi ışıkta, iki elin de görünecek şekilde dene.</p>
+    </section>
+
+    <section class="stats">
+      <article class="stat"><span>DİREKSİYON AÇISI</span><strong id="angle">0°</strong><small>Kalibrasyona göre</small></article>
+      <article class="stat"><span>ALGILANAN EL</span><strong id="hands">0 / 2</strong><small id="trackingText">Takip bekleniyor</small></article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title"><div><h2>Direksiyon ayarları</h2><p>İki elin görünürken düz konumda kalibre et.</p></div></div>
+      <div class="range-line"><label for="sensitivity">Hassasiyet</label><output id="sensitivityValue">Orta</output></div>
+      <input id="sensitivity" type="range" min="50" max="200" value="100">
+      <div class="range-labels"><span>Daha yumuşak</span><span>Daha hassas</span></div>
+      <button id="calibrateBtn" class="secondary full" disabled>Direksiyonu kalibre et (0°)</button>
+      <div class="meter"><div id="meterFill"></div></div>
+      <div class="meter-labels"><span>← Sol</span><span>Merkez</span><span>Sağ →</span></div>
+    </section>
+
+    <section class="panel note">
+      <h2>Nasıl kullanılır?</h2>
+      <ol>
+        <li>Telefonu sabit tut ve karton direksiyonu kameraya göster.</li>
+        <li>İki elinle direksiyonu kavra; ellerin kamerada görünsün.</li>
+        <li>Direksiyon düz konumdayken kalibrasyon yap.</li>
+        <li>Direksiyonu sağa ve sola çevirerek açı göstergesini dene.</li>
+      </ol>
+      <p><b>Bilgi:</b> Bu ilk sürüm, karton çemberin kendisini tanımak yerine iki elin bilek noktalarının yön değişimini takip ederek yaklaşık dönüş açısı üretir. Tamamen yuvarlak ve işaretsiz kartonun dönüşünü yalnızca çember görüntüsünden anlamak mümkün değildir.</p>
+    </section>
+    <footer>Cardboard Wheel · Deneysel ilk sürüm</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "Cardboard Wheel",
+  "short_name": "Cardboard Wheel",
+  "description": "Karton direksiyonunu kamerayla takip eden deneysel uygulama.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0c1219",
+  "theme_color": "#101820",
+  "orientation": "landscape"
+}
