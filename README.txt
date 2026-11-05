@@ -28,3 +28,5 @@ ONEMLI SINIRLAMALAR
 GIZLILIK
 Video tarayici icinde islenir; bu prototipte goruntu kaydi veya sunucuya
 video yukleme kodu yoktur.
+
+GUNCELLEME: MediaPipe artik vision_bundle.mjs dosyasindan ES module olarak yukleniyor.
